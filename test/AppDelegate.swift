@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  test
-//
-//  Created by Nicholas Wargnier on 1/8/15.
-//  Copyright (c) 2015 StyleLend. All rights reserved.
-//
 
 import UIKit
 

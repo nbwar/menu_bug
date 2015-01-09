@@ -1,23 +1,28 @@
-//
-//  ViewController.swift
-//  test
-//
-//  Created by Nicholas Wargnier on 1/8/15.
-//  Copyright (c) 2015 StyleLend. All rights reserved.
-//
+
 
 import UIKit
 
 class ViewController: UIViewController {
 
+  let transitionManager = MenuTransitionManager()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    self.transitionManager.sourceViewController = self
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    
+    // set transition delegate for our menu view controller
+    let menu = segue.destinationViewController as UIViewController
+    menu.transitioningDelegate = self.transitionManager
+    self.transitionManager.menuViewController = menu
+    
+  }
+  
+  @IBAction func unwindToMainViewController (sender: UIStoryboardSegue){
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
 
 
